@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.grabkart.entity">
+	<class name="User" table="users">
+		<id name="id" type="long" unsaved-value="null">
+			<generator class="increment" />
+		</id>
+		<property name="userName" column="user" />
+		<property name="password" column="password" />
+		<property name="type" column="type" />
+	</class>
+	<query name="findUsersByUsername">
+        <![CDATA[from User u where u.userName = :userName]]>
+    </query>
+    <query name="findUserByUserNameAndPassword">
+        <![CDATA[from User u where u.userName = :userName and u.password = :password]]>
+    </query>
+</hibernate-mapping>

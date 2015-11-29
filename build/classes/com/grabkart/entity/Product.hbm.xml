@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.grabkart.entity">
+	<class name="Product" table="product_list">
+		<id name="id" type="long" unsaved-value="null">
+			<generator class="increment" />
+		</id>
+		<property name="name" column="name" not-null="false" />
+		<property name="image" column="image" not-null="false" />
+		<property name="price" column="price" not-null="false" />
+		<property name="quantity" column="quantity" not-null="false" />
+		<property name="visible" column="is_visible" not-null="false" />
+		<property name="soldBy" column="sold_by" not-null="false" />
+	</class>
+	<query name="fetchProductsList">
+        <![CDATA[from Product]]>
+    </query>
+    <query name="fetchProductsListBySellerId">
+        <![CDATA[from Product p where p.soldBy = :sellerId]]>
+    </query>
+</hibernate-mapping>
